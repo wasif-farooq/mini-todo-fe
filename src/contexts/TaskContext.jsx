@@ -52,6 +52,7 @@ export const TaskProvider = ({ children }) => {
     try {
       const createdTask = await taskService.create({
         ...taskData,
+        parent_id: taskData.parentId || null,
         status: "todo",
       });
       setTasks((prevTasks) => ({
@@ -66,12 +67,16 @@ export const TaskProvider = ({ children }) => {
 
   const editTask = async (task) => {
     try {
-      const updatedTask = await taskService.update(task.id, task);
+      const updatedTask = await taskService.update(task.id, {
+        ...task,
+        parent_id: task.parentId || null,
+        status: task.status === "inProgress" ? "in_progress" : task.status,
+      });
       setTasks((prevTasks) => {
         const updatedTasks = { ...prevTasks };
         const taskList =
           updatedTasks[
-            task.status === "in_progress" ? "inProgress" : task.status
+          task.status === "in_progress" ? "inProgress" : task.status
           ];
         const taskIndex = taskList.findIndex((t) => t.id === task.id);
         if (taskIndex !== -1) {
@@ -105,7 +110,7 @@ export const TaskProvider = ({ children }) => {
         const updatedTasks = { ...prevTasks };
         const taskList =
           updatedTasks[
-            task.status === "in_progress" ? "inProgress" : task.status
+          task.status === "in_progress" ? "inProgress" : task.status
           ];
         const taskIndex = taskList.findIndex((t) => t.id === task.id);
         if (taskIndex !== -1) {
@@ -126,7 +131,7 @@ export const TaskProvider = ({ children }) => {
         const updatedTasks = { ...prevTasks };
         const taskList =
           updatedTasks[
-            task.status === "in_progress" ? "inProgress" : task.status
+          task.status === "in_progress" ? "inProgress" : task.status
           ];
         const taskIndex = taskList.findIndex((t) => t.id === task.id);
         if (taskIndex !== -1) {
@@ -145,10 +150,8 @@ export const TaskProvider = ({ children }) => {
     }
   };
 
-  const getParentTaskName = (parentId) => {
-    const allTasks = [...tasks.todo, ...tasks.inProgress, ...tasks.done];
-    const parentTask = allTasks.find((task) => task.id === parentId);
-    return parentTask ? parentTask.title : null;
+  const getParentTaskName = (parent) => {
+    return parent ? parent.title : null;
   };
 
   return (

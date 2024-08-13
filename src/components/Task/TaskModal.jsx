@@ -68,7 +68,7 @@ const TaskModal = () => {
       >
         <Option value={null}>No Parent</Option>
         {[...tasks.todo, ...tasks.inProgress, ...tasks.done]
-          .filter((task) => task.parentId === null) // Only show tasks without parents
+          .filter((task) => task.parent_id === null) // Only show tasks without parents
           .map((task) => (
             <Option key={task.id} value={task.id}>
               {task.title}

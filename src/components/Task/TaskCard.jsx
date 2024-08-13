@@ -69,9 +69,9 @@ const TaskCard = ({ task }) => {
       <Text type="secondary" style={{ display: "block", marginTop: "4px" }}>
         Created At: {dayjs(task.created_at).format("MMMM D, YYYY h:mm A")}
       </Text>
-      {task.parentId && (
+      {task.parent && (
         <Text type="secondary" style={{ display: "block", marginTop: "4px" }}>
-          Parent Task: {getParentTaskName(task.parentId)}
+          Parent Task: {getParentTaskName(task.parent)}
         </Text>
       )}
     </Card>
