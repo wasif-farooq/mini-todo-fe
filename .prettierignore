@@ -1,0 +1,8 @@
+.github
+.nyc_output
+node_modules
+openvpn
+scripts
+tmp
+*.ejs
+src/components/constant/*.json
