@@ -6,6 +6,7 @@ import "antd/dist/reset.css"; // Import Ant Design's styles
 import "./index.css"; // Import your custom styles if any
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./contexts/AuthContext";
+import { ToastContainer } from "react-toastify";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -14,6 +15,7 @@ root.render(
     <Router>
       <AuthProvider>
         <App />
+        <ToastContainer />
       </AuthProvider>
     </Router>
   </React.StrictMode>,

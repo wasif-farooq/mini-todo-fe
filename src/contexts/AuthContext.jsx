@@ -1,4 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import authService from "../services/AuthService";
 import { useNavigate } from "react-router-dom";
 
@@ -20,9 +22,9 @@ export const AuthProvider = ({ children }) => {
     const fetchUser = async () => {
       try {
         const response = await authService.me();
-        setUser(response.data.user);
+        setUser(response.user);
       } catch (err) {
-        console.error("Failed to fetch user", err);
+        toast.error("Failed to fetch user data");
       } finally {
         setLoading(false);
       }
@@ -44,7 +46,7 @@ export const AuthProvider = ({ children }) => {
       navigate("/");
     } catch (err) {
       setLoginError("Login failed");
-      console.error("Login failed", err);
+      toast.error("Login failed. Please check your credentials and try again.");
     }
   };
 
@@ -60,9 +62,10 @@ export const AuthProvider = ({ children }) => {
       setRegisterError(null); // Reset previous errors
       const response = await authService.register(userData);
       setUser(response.user);
+      toast.success("Registration successful. Welcome!");
     } catch (err) {
       setRegisterError("Registration failed");
-      console.error("Registration failed", err);
+      toast.error("Registration failed. Please try again.");
     }
   };
 
@@ -73,6 +76,7 @@ export const AuthProvider = ({ children }) => {
     authService.logout();
     setUser(null);
     localStorage.removeItem("selectedOrganization");
+    toast.success("Successfully logged out");
   };
 
   return (
@@ -87,7 +91,7 @@ export const AuthProvider = ({ children }) => {
         logout,
       }}
     >
-      {!loading && children}
+      {children}
     </AuthContext.Provider>
   );
 };

@@ -23,7 +23,6 @@ class TaskService {
    */
   async create(taskData) {
     const response = await httpService.post("tasks", taskData);
-    console.log({ response });
     return response;
   }
 

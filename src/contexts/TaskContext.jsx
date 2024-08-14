@@ -1,4 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import taskService from "../services/TaskService";
 
 const TaskContext = createContext();
@@ -33,6 +35,7 @@ export const TaskProvider = ({ children }) => {
         setTasks(categorizedTasks);
       } catch (error) {
         console.error("Failed to fetch tasks:", error);
+        toast.error("Failed to fetch tasks. Please try again later.");
       }
     };
 
@@ -60,8 +63,10 @@ export const TaskProvider = ({ children }) => {
         todo: [...prevTasks.todo, createdTask],
       }));
       hideModal();
+      toast.success("Task added successfully.");
     } catch (error) {
       console.error("Failed to create task:", error);
+      toast.error("Failed to create task. Please try again.");
     }
   };
 
@@ -74,10 +79,12 @@ export const TaskProvider = ({ children }) => {
       });
       setTasks((prevTasks) => {
         const updatedTasks = { ...prevTasks };
+        console.log({ updatedTasks, task });
         const taskList =
           updatedTasks[
             task.status === "in_progress" ? "inProgress" : task.status
           ];
+        console.log({ taskList });
         const taskIndex = taskList.findIndex((t) => t.id === task.id);
         if (taskIndex !== -1) {
           taskList[taskIndex] = updatedTask;
@@ -85,8 +92,10 @@ export const TaskProvider = ({ children }) => {
         return updatedTasks;
       });
       hideModal();
+      toast.success("Task updated successfully.");
     } catch (error) {
       console.error("Failed to update task:", error);
+      toast.error("Failed to update task. Please try again.");
     }
   };
 
@@ -119,8 +128,10 @@ export const TaskProvider = ({ children }) => {
         }
         return updatedTasks;
       });
+      toast.success(`Task moved to ${newStatus}.`);
     } catch (error) {
       console.error("Failed to move task:", error);
+      toast.error("Failed to move task. Please try again.");
     }
   };
 
@@ -145,8 +156,10 @@ export const TaskProvider = ({ children }) => {
         }
         return updatedTasks;
       });
+      toast.success("Task deleted successfully.");
     } catch (error) {
       console.error("Failed to delete task:", error);
+      toast.error("Failed to delete task. Please try again.");
     }
   };
 
