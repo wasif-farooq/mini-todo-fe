@@ -16,7 +16,7 @@ const TaskModal = () => {
     if (currentTask) {
       setNewTask(currentTask.title);
       setDescription(currentTask.description || "");
-      setParentTaskId(currentTask.parentId || null);
+      setParentTaskId(currentTask.parent_id || null);
     } else {
       setNewTask("");
       setDescription("");

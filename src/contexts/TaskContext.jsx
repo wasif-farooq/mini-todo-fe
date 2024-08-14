@@ -76,7 +76,7 @@ export const TaskProvider = ({ children }) => {
         const updatedTasks = { ...prevTasks };
         const taskList =
           updatedTasks[
-          task.status === "in_progress" ? "inProgress" : task.status
+            task.status === "in_progress" ? "inProgress" : task.status
           ];
         const taskIndex = taskList.findIndex((t) => t.id === task.id);
         if (taskIndex !== -1) {
@@ -110,7 +110,7 @@ export const TaskProvider = ({ children }) => {
         const updatedTasks = { ...prevTasks };
         const taskList =
           updatedTasks[
-          task.status === "in_progress" ? "inProgress" : task.status
+            task.status === "in_progress" ? "inProgress" : task.status
           ];
         const taskIndex = taskList.findIndex((t) => t.id === task.id);
         if (taskIndex !== -1) {
@@ -131,7 +131,7 @@ export const TaskProvider = ({ children }) => {
         const updatedTasks = { ...prevTasks };
         const taskList =
           updatedTasks[
-          task.status === "in_progress" ? "inProgress" : task.status
+            task.status === "in_progress" ? "inProgress" : task.status
           ];
         const taskIndex = taskList.findIndex((t) => t.id === task.id);
         if (taskIndex !== -1) {
