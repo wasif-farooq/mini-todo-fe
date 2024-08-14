@@ -1,70 +1,117 @@
-# Getting Started with Create React App
+# Project Name
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is built with Create React App (CRA) and includes configurations for linting with ESLint and code formatting with Prettier.
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [Available Scripts](#available-scripts)
+- [Environment Variables](#environment-variables)
+- [License](#license)
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- **Node.js**: Make sure you have Node.js installed. The recommended version is the latest LTS version.
+- **Yarn**: This project uses Yarn as the package manager. You can install it globally using npm:
+
+  ```bash
+  npm install -g yarn
+  ```
+
+## Setup
+
+Follow these steps to set up the project locally:
+
+1. **Clone the repository**:
+
+   ```bash
+   git clone https://github.com/wasif-farooq/mini-todo-fe.git
+   cd mini-todo-fe
+   ```
+
+2. **Install dependencies**:
+
+   Install the required packages using Yarn:
+
+   ```bash
+   yarn install
+   ```
+
+3. **Create an `.env` file**:
+
+   Create a `.env` file in the root of your project and add the required environment variables as described in the [Environment Variables](#environment-variables) section.
+
+4. **Run the project**:
+
+   Start the development server:
+
+   ```bash
+   yarn start
+   ```
 
 ## Available Scripts
 
-In the project directory, you can run:
+In the project directory, you can run the following scripts:
 
-### `npm start`
+### `yarn start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Runs the app in the development mode.  
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The page will reload if you make edits.  
+You will also see any lint errors in the console.
 
-### `npm test`
+### `yarn build`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
+Builds the app for production to the `build` folder.  
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `yarn test`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Launches the test runner in the interactive watch mode.  
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run eject`
+### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: This is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### `yarn lint`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Runs ESLint to analyze your code for potential errors and style issues based on the defined rules. This command checks all `.js` and `.jsx` files in the `src` directory, excluding test files.
 
-## Learn More
+### `yarn lint --fix`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Automatically fixes ESLint errors and warnings in your code. It runs the `yarn lint` command with the `--fix` flag.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `yarn prettier:fix`
 
-### Code Splitting
+Formats all the code in the `src` directory according to the Prettier configuration.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### `yarn prettier:check`
 
-### Analyzing the Bundle Size
+Checks if the code in the `src` directory is formatted according to the Prettier configuration.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### `yarn fix`
 
-### Making a Progressive Web App
+Runs both `yarn lint --fix` and `yarn prettier:fix` to automatically fix and format your code.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Environment Variables
 
-### Advanced Configuration
+To run the project, you need to set up some environment variables. Create a `.env.local` file in the root directory and add the following variables:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+```bash
+REACT_APP_API_BASE_URL=http://localhost/api
+REACT_APP_MOCK_BASE_URL=http://localhost/api
+REACT_APP_MOCK_ENABLED=false
+```
 
-### Deployment
+You can adjust these variables according to your development or production environment needs.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## License
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
