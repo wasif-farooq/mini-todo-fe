@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Button, Input, Form, Card, Row, Col, Spin } from "antd";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import { useAuth } from "../../contexts/AuthContext";
 
 const LoginView = () => {
-  const { login, loginError } = useAuth(); // Access the login function and error state from AuthContext
+  const { login } = useAuth(); // Access the login function and error state from AuthContext
   const [submitting, setSubmitting] = useState(false); // State to manage submitting/loading state
 
   const handleLogin = async (values) => {
@@ -44,13 +45,6 @@ const LoginView = () => {
               <Input.Password placeholder="Password" />
             </Form.Item>
 
-            {loginError && (
-              <Form.Item>
-                <p style={{ color: "red" }}>{loginError}</p>{" "}
-                {/* Display login error if any */}
-              </Form.Item>
-            )}
-
             <Form.Item>
               <Button
                 type="primary"
@@ -63,6 +57,13 @@ const LoginView = () => {
                 {/* Show spinner while submitting */}
               </Button>
             </Form.Item>
+
+            <Form.Item>
+              <p>
+                Don't have an account?{" "}
+                <Link to="/register">Register here</Link>{" "}
+              </p>
+            </Form.Item>
           </Form>
         </Card>
       </Col>
@@ -71,3 +72,4 @@ const LoginView = () => {
 };
 
 export default LoginView;
+

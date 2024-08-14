@@ -24,7 +24,7 @@ export const AuthProvider = ({ children }) => {
         const response = await authService.me();
         setUser(response.user);
       } catch (err) {
-        toast.error("Failed to fetch user data");
+        // toast.error("Failed to fetch user data");
       } finally {
         setLoading(false);
       }

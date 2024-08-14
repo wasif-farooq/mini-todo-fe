@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Input, Form, Card, Row, Col, Spin } from "antd";
 import { useAuth } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 const RegisterView = () => {
   const { register, registerError } = useAuth(); // Access the register function and error state from AuthContext
@@ -78,6 +79,13 @@ const RegisterView = () => {
                 {/* Show spinner while submitting */}
               </Button>
             </Form.Item>
+
+            <Form.Item>
+              <p>
+                Already have an account?{" "}
+                <Link to="/login">Login here</Link> {/* Link to the login page */}
+              </p>
+            </Form.Item>
           </Form>
         </Card>
       </Col>
@@ -86,3 +94,4 @@ const RegisterView = () => {
 };
 
 export default RegisterView;
+
